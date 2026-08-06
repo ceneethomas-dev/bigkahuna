@@ -8,6 +8,31 @@ const {
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+const jsonLd = {
+	"@context": "https://schema.org",
+	"@type": "Restaurant",
+	"name": "Mon Restaurant",
+	"image": new URL(image, Astro.site).toString(),
+	"address": {
+		"@type": "PostalAddress",
+		"streetAddress": "12 rue de la Paix",
+		"addressLocality": "Pau",
+		"postalCode": "64000",
+		"addressCountry": "FR"
+	},
+	"telephone": "+33-5-XX-XX-XX-XX",
+	"servesCuisine": "Française",
+	"priceRange": "€€",
+	"openingHoursSpecification": [
+		{
+			"@type": "OpeningHoursSpecification",
+			"dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+			"opens": "12:00",
+			"closes": "22:00"
+		}
+	]
+};
 ---
 
 <!doctype html>
@@ -36,6 +61,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={new URL(image, Astro.site)} />
+
+		<!-- Données structurées Restaurant -->
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 	</head>
 	<body>
 		<Header />

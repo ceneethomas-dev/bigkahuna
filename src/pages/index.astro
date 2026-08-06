@@ -1,35 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
-const jsonLd = {
-	"@context": "https://schema.org",
-	"@type": "Restaurant",
-	"name": "Mon Restaurant",
-	"image": "https://bigkahuna-xxxx.vercel.app/og-image.jpg",
-	"address": {
-		"@type": "PostalAddress",
-		"streetAddress": "12 rue de la Paix",
-		"addressLocality": "Pau",
-		"postalCode": "64000",
-		"addressCountry": "FR"
-	},
-	"telephone": "+33-5-XX-XX-XX-XX",
-	"servesCuisine": "Française",
-	"priceRange": "€€",
-	"openingHoursSpecification": [
-		{
-			"@type": "OpeningHoursSpecification",
-			"dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-			"opens": "12:00",
-			"closes": "22:00"
-		}
-	]
-};
 ---
 
 <Layout title="Accueil - Mon Restaurant"
         description="Bienvenue sur le site de Mon Restaurant, où vous trouverez des plats faits maison et une ambiance chaleureuse."
     >
-	<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
 	<!-- reste de ta page -->
 </Layout>
