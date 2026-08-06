@@ -1,0 +1,39 @@
+---
+const { name, description, price } = Astro.props;
+---
+
+<div class="menu-item">
+	<div class="menu-item-header">
+		<h3>{name}</h3>
+		<span class="price">{price} €</span>
+	</div>
+	<p>{description}</p>
+</div>
+
+<style>
+	.menu-item {
+		border-bottom: 1px solid #e5e5e5;
+		padding: 16px 0;
+	}
+
+	.menu-item-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+	}
+
+	h3 {
+		margin: 0;
+		font-size: 18px;
+	}
+
+	.price {
+		font-weight: bold;
+		color: #d83333;
+	}
+
+	p {
+		color: #4b5563;
+		margin: 8px 0 0;
+	}
+</style>

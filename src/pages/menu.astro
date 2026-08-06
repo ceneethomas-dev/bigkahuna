@@ -1,0 +1,39 @@
+---
+import Layout from '../layouts/Layout.astro';
+import MenuItem from '../components/MenuItem.astro';
+
+const plats = [
+	{
+		name: "Salade César Italienne",
+		description: "Salade, poulet grillé, parmesan, croûtons, sauce César maison",
+		price: "12"
+	},
+	{
+		name: "Burger Maison",
+		description: "Steak haché, cheddar, bacon, oignons caramélisés, frites maison",
+		price: "16"
+	},
+	{
+		name: "Tarte au citron",
+		description: "Tarte au citron meringuée, coulis de fruits rouges",
+		price: "7"
+	},
+    {
+		name: "Lasagne du Chat Ours",
+		description: "Lasagne avec sauce tomate, viande hachée, mozzarella",
+		price: "14"
+	}
+];
+---
+
+<Layout title="Menu - Mon Restaurant">
+	<h1>Notre Menu</h1>
+
+	{plats.map((plat) => (
+		<MenuItem
+			name={plat.name}
+			description={plat.description}
+			price={plat.price}
+		/>
+	))}
+</Layout>
