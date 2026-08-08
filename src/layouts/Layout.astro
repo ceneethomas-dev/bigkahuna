@@ -1,5 +1,6 @@
 ---
 import Header from '../components/Header.astro';
+import { siteConfig } from '../config.js';
 
 const {
 	title,
@@ -12,24 +13,24 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const jsonLd = {
 	"@context": "https://schema.org",
 	"@type": "Restaurant",
-	"name": "Mon Restaurant",
+	"name": siteConfig.name,
 	"image": new URL(image, Astro.site).toString(),
 	"address": {
 		"@type": "PostalAddress",
-		"streetAddress": "12 rue de la Paix",
-		"addressLocality": "Pau",
-		"postalCode": "64000",
-		"addressCountry": "FR"
+		"streetAddress": siteConfig.address.street,
+		"addressLocality": siteConfig.address.city,
+		"postalCode": siteConfig.address.postalCode,
+		"addressCountry": siteConfig.address.country
 	},
-	"telephone": "+33-5-XX-XX-XX-XX",
-	"servesCuisine": "Française",
-	"priceRange": "€€",
+	"telephone": siteConfig.phone,
+	"servesCuisine": siteConfig.cuisine,
+	"priceRange": siteConfig.priceRange,
 	"openingHoursSpecification": [
 		{
 			"@type": "OpeningHoursSpecification",
-			"dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-			"opens": "12:00",
-			"closes": "22:00"
+			"dayOfWeek": siteConfig.openingHours.days,
+			"opens": siteConfig.openingHours.opens,
+			"closes": siteConfig.openingHours.closes
 		}
 	]
 };
