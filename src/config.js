@@ -1,5 +1,5 @@
 export const siteConfig = {
-	name: "Mon Restaurant",
+	name: "Big Kahuna",
 	description: "Restaurant traditionnel proposant une cuisine faite maison, dans une ambiance chaleureuse.",
 	address: {
 		street: "20 rue de Satory",
