@@ -10,6 +10,17 @@ const {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
+const openingHoursSpecification = siteConfig.openingHours
+	.filter((day) => !day.closed)
+	.flatMap((day) =>
+		day.slots.map((slot) => ({
+			"@type": "OpeningHoursSpecification",
+			"dayOfWeek": day.day,
+			"opens": slot.opens,
+			"closes": slot.closes
+		}))
+	);
+
 const jsonLd = {
 	"@context": "https://schema.org",
 	"@type": "Restaurant",
@@ -25,14 +36,7 @@ const jsonLd = {
 	"telephone": siteConfig.phone,
 	"servesCuisine": siteConfig.cuisine,
 	"priceRange": siteConfig.priceRange,
-	"openingHoursSpecification": [
-		{
-			"@type": "OpeningHoursSpecification",
-			"dayOfWeek": siteConfig.openingHours.days,
-			"opens": siteConfig.openingHours.opens,
-			"closes": siteConfig.openingHours.closes
-		}
-	]
+	"openingHoursSpecification": openingHoursSpecification
 };
 ---
 
