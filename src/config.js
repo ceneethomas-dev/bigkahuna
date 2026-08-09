@@ -2,12 +2,12 @@ export const siteConfig = {
 	name: "Mon Restaurant",
 	description: "Restaurant traditionnel proposant une cuisine faite maison, dans une ambiance chaleureuse.",
 	address: {
-		street: "12 rue de la Paix",
-		city: "Pau",
-		postalCode: "64000",
+		street: "20 rue de Satory",
+		city: "Versailles",
+		postalCode: "78000",
 		country: "FR"
 	},
-	phone: "+33-5-XX-XX-XX-XX",
+	phone: "01 23 45 67 89",
 	cuisine: "Française",
 	priceRange: "€€",
 	openingHours: {

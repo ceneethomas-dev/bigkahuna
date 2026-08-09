@@ -1,10 +1,40 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../config.js';
 ---
 
-<Layout title="Contact - Restaurant Big Kahuna"
-        description="Contactez-nous pour plus d'informations sur notre restaurant italien."
+<Layout
+	title={`Contact - ${siteConfig.name}`}
+	description={`Contactez ${siteConfig.name} : adresse, téléphone, horaires d'ouverture.`}
 >
-	<h1>Contact</h1>
-	<p>N'hésitez pas à nous contacter pour plus d'informations.</p>
+	<h1>Contactez-nous</h1>
+
+	<section>
+		<h2>Adresse</h2>
+		<p>
+			{siteConfig.address.street}<br />
+			{siteConfig.address.postalCode} {siteConfig.address.city}
+		</p>
+	</section>
+
+	<section>
+		<h2>Téléphone</h2>
+		<p><a href={`tel:${siteConfig.phone}`}>{siteConfig.phone}</a></p>
+	</section>
+
+	<section>
+		<h2>Horaires</h2>
+		<p>
+			Ouvert de {siteConfig.openingHours.opens} à {siteConfig.openingHours.closes}
+		</p>
+	</section>
+
+	<section>
+		<h2>Suivez-nous</h2>
+		<p>
+			<a href={siteConfig.social.facebook} target="_blank">Facebook</a>
+			·
+			<a href={siteConfig.social.instagram} target="_blank">Instagram</a>
+		</p>
+	</section>
 </Layout>
