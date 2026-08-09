@@ -1,6 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { siteConfig } from '../config.js';
+
+const fullAddress = `${siteConfig.address.street}, ${siteConfig.address.postalCode} ${siteConfig.address.city}`;
+const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(fullAddress)}`;
 ---
 
 <Layout
@@ -12,8 +15,10 @@ import { siteConfig } from '../config.js';
 	<section>
 		<h2>Adresse</h2>
 		<p>
-			{siteConfig.address.street}<br />
-			{siteConfig.address.postalCode} {siteConfig.address.city}
+			<a href={mapsUrl} target="_blank" rel="noopener noreferrer">
+				{siteConfig.address.street}<br />
+				{siteConfig.address.postalCode} {siteConfig.address.city}
+			</a>
 		</p>
 	</section>
 
