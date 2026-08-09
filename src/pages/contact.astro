@@ -23,11 +23,18 @@ import { siteConfig } from '../config.js';
 	</section>
 
 	<section>
-		<h2>Horaires</h2>
-		<p>
-			Ouvert de {siteConfig.openingHours.opens} à {siteConfig.openingHours.closes}
-		</p>
-	</section>
+	<h2>Horaires</h2>
+	<ul>
+		{siteConfig.openingHours.map((day) => (
+			<li>
+				<strong>{day.label}</strong> :
+				{day.closed
+					? " Fermé"
+					: day.slots?.map((slot) => `${slot.opens} - ${slot.closes}`).join(" / ")}
+			</li>
+		))}
+	</ul>
+</section>
 
 	<section>
 		<h2>Suivez-nous</h2>
